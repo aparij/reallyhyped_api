@@ -5,7 +5,7 @@ const app = express()
 
 app.get('/tags', (req, res) => {
   const queryLength=req.query.keywords.length;
-  const tags = req.query.keywords.substring(1,queryLength).split(",");
+  const tags = req.query.keywords.split(",");
   let responseData={};
   for(let tag of tags){
     responseData[tag]=tagData[tag];
@@ -15,4 +15,4 @@ app.get('/tags', (req, res) => {
 
 )
 
-app.listen(3000, () => console.log('Example app listening on port 3000!'))
+app.listen(3001, () => console.log('Example app listening on port 3001!'))
