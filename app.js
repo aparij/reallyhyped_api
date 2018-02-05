@@ -39,5 +39,5 @@ app.get('/suggestions', (req, res) => {
 )
 
 
-
-app.listen(3001, () => console.log('Example app listening on port 3001!'))
+const port = process.ENV || 3001;
+app.listen(3001, () => console.log('RH Listening on port ' + port))
