@@ -1,4 +1,5 @@
 import express from 'express';
+import path from 'path';
 import tagData from './public/tagdata.json';
 import _ from 'lodash';
 
@@ -9,6 +10,13 @@ const top20 = _.sortBy(Object.keys(tagData).filter(key=>tagData[key][tagData[key
                     ['value.rank']);
                     
 const suggestions = Object.keys(tagData);
+
+app.use(express.static(path.join(__dirname, 'build')));
+
+app.get('/', function (req, res) {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
 
 app.get('/tags', (req, res) => {
   let responseData={};
